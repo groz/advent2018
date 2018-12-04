@@ -58,17 +58,7 @@ class Day03 {
     }
 
     fun single() {
-        val remainingClaims = claims.toMutableSet()
-
-        for (row in field) {
-            for (cell in row) {
-                if (cell.size > 1) {
-                    remainingClaims -= cell
-                }
-            }
-        }
-
-        println(remainingClaims)
+        val duplicates = field.flatMap { row -> row.filter { it.size > 1 } }.flatten()
+        println(claims - duplicates)
     }
-
 }
